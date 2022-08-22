@@ -1,0 +1,52 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xd7dfc0 .scope module, "nandtb" "nandtb" 2 2;
+ .timescale 0 0;
+v0xd90670_0 .var "a1", 0 0;
+v0xd90710_0 .var "b1", 0 0;
+RS_0x7f35aded5108 .resolv tri, L_0xd90ac0, L_0xd90c10, L_0xd90cc0, C4<z>;
+v0xd907c0_0 .net8 "out", 0 0, RS_0x7f35aded5108; 3 drivers, strength-aware
+S_0xd7e0b0 .scope module, "n" "cmos_nand" 2 17, 3 1, S_0xd7dfc0;
+ .timescale 0 0;
+L_0xd90990 .functor NMOS 1, C8<770>, v0xd90710_0, C4<0>, C4<0>;
+L_0xd90ac0 .functor NMOS 1, L_0xd90990, v0xd90670_0, C4<0>, C4<0>;
+L_0xd90c10 .functor PMOS 1, C8<771>, v0xd90710_0, C4<0>, C4<0>;
+L_0xd90cc0 .functor PMOS 1, C8<771>, v0xd90670_0, C4<0>, C4<0>;
+v0xd7f3d0_0 .net "a", 0 0, v0xd90670_0; 1 drivers
+v0xd90300_0 .net "b", 0 0, v0xd90710_0; 1 drivers
+v0xd903a0_0 .net8 "gnd", 0 0, C8<770>; 1 drivers, strength-aware
+v0xd90440_0 .net8 "vdd", 0 0, C8<771>; 1 drivers, strength-aware
+v0xd904f0_0 .net8 "w", 0 0, L_0xd90990; 1 drivers, strength-aware
+v0xd90590_0 .alias "y", 0 0, v0xd907c0_0;
+    .scope S_0xd7dfc0;
+T_0 ;
+    %vpi_call 2 6 "$dumpfile", "test.v";
+    %vpi_call 2 7 "$dumpvars", 1'sb0, S_0xd7dfc0;
+    %vpi_call 2 8 "$display", "in1,in2,out";
+    %vpi_call 2 9 "$monitor", "%b,%b,%b", v0xd90670_0, v0xd90710_0, v0xd907c0_0;
+    %delay 20, 0;
+    %set/v v0xd90670_0, 0, 1;
+    %set/v v0xd90710_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0xd90670_0, 0, 1;
+    %set/v v0xd90710_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0xd90670_0, 1, 1;
+    %set/v v0xd90710_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0xd90670_0, 1, 1;
+    %set/v v0xd90710_0, 1, 1;
+    %delay 20, 0;
+    %vpi_call 2 14 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "test.v";
+    "./vlsi_1.v";

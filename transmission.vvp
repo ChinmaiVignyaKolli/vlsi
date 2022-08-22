@@ -1,0 +1,47 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0xac9fc0 .scope module, "transmission_gateout" "transmission_gateout" 2 2;
+ .timescale 0 0;
+v0xadb1f0_0 .var "abit", 0 0;
+v0xadb2c0_0 .var "bbit", 0 0;
+RS_0x7f0130dd70a8 .resolv tri, L_0xadb420, L_0xadb620, C4<z>, C4<z>;
+v0xadb370_0 .net8 "s", 0 0, RS_0x7f0130dd70a8; 2 drivers, strength-aware
+S_0xaca0b0 .scope module, "obj" "transmission_gate" 2 6, 3 1, S_0xac9fc0;
+ .timescale 0 0;
+L_0xadb420 .functor PMOS 1, v0xadb1f0_0, L_0xadb520, C4<0>, C4<0>;
+L_0xadb520 .functor NOT 1, v0xadb2c0_0, C4<0>, C4<0>, C4<0>;
+L_0xadb620 .functor NMOS 1, v0xadb1f0_0, v0xadb2c0_0, C4<0>, C4<0>;
+v0xacac90_0 .net *"_s1", 0 0, L_0xadb520; 1 drivers
+v0xadb000_0 .net "a", 0 0, v0xadb1f0_0; 1 drivers
+v0xadb0a0_0 .net "en", 0 0, v0xadb2c0_0; 1 drivers
+v0xadb140_0 .alias "y", 0 0, v0xadb370_0;
+    .scope S_0xac9fc0;
+T_0 ;
+    %set/v v0xadb1f0_0, 0, 1;
+    %set/v v0xadb2c0_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0xadb1f0_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0xadb1f0_0, 0, 1;
+    %set/v v0xadb2c0_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0xadb1f0_0, 1, 1;
+    %end;
+    .thread T_0;
+    .scope S_0xac9fc0;
+T_1 ;
+    %vpi_call 2 21 "$dumpfile", "testtransmission_gate.vcd";
+    %vpi_call 2 22 "$dumpvars", 1'sb0, S_0xac9fc0;
+    %vpi_call 2 23 "$monitor", "A=%b,en=%b,y=%b", v0xadb1f0_0, v0xadb2c0_0, v0xadb370_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "transmission_gatesim.v";
+    "./transmission_gate.v";

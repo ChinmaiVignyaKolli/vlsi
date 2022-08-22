@@ -1,0 +1,52 @@
+$date
+	Thu Sep 27 16:31:55 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module v_s_dtb $end
+$var wire 4 ! out [3:0] $end
+$var reg 1 " enable $end
+$var reg 2 # in [1:0] $end
+$scope module n $end
+$var wire 1 $ enable $end
+$var wire 2 % in [1:0] $end
+$var reg 4 & out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+bx %
+x$
+bx #
+x"
+bx !
+$end
+#20
+b1 &
+b1 !
+1"
+1$
+b0 #
+b0 %
+#40
+b10 &
+b10 !
+b1 #
+b1 %
+#60
+b100 &
+b100 !
+b10 #
+b10 %
+#80
+b1000 &
+b1000 !
+b11 #
+b11 %
+#100

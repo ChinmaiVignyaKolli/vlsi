@@ -1,0 +1,52 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1095f20 .scope module, "adder32tb" "adder32tb" 2 2;
+ .timescale 0 0;
+v0x10a7af0_0 .net "S", 31 0, L_0x10a7d20; 1 drivers
+v0x10a7bc0_0 .var "abit", 31 0;
+v0x10a7c70_0 .var "bbit", 31 0;
+S_0x1096010 .scope module, "obj" "adder32" 2 7, 3 1, S_0x1095f20;
+ .timescale 0 0;
+v0x1072d50_0 .net "a", 31 0, v0x10a7bc0_0; 1 drivers
+v0x10a79b0_0 .net "b", 31 0, v0x10a7c70_0; 1 drivers
+v0x10a7a50_0 .alias "s", 31 0, v0x10a7af0_0;
+L_0x10a7d20 .arith/sub 32, v0x10a7bc0_0, v0x10a7c70_0;
+    .scope S_0x1095f20;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "adder32TEST.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_0x1095f20;
+    %vpi_call 2 16 "$monitor", "%b,%b,%b", v0x10a7bc0_0, v0x10a7c70_0, v0x10a7af0_0;
+    %delay 20, 0;
+    %movi 8, 3, 32;
+    %set/v v0x10a7bc0_0, 8, 32;
+    %movi 8, 2, 32;
+    %set/v v0x10a7c70_0, 8, 32;
+    %delay 20, 0;
+    %movi 8, 4, 32;
+    %set/v v0x10a7bc0_0, 8, 32;
+    %movi 8, 1, 32;
+    %set/v v0x10a7c70_0, 8, 32;
+    %delay 20, 0;
+    %movi 8, 8, 32;
+    %set/v v0x10a7bc0_0, 8, 32;
+    %movi 8, 6, 32;
+    %set/v v0x10a7c70_0, 8, 32;
+    %delay 20, 0;
+    %movi 8, 1, 32;
+    %set/v v0x10a7bc0_0, 8, 32;
+    %movi 8, 1, 32;
+    %set/v v0x10a7c70_0, 8, 32;
+    %delay 20, 0;
+    %vpi_call 2 30 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sub32tb.v";
+    "./sub32.v";
