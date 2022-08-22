@@ -1,0 +1,48 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x2364f20 .scope module, "comparatortb" "comparatortb" 2 2;
+ .timescale 0 0;
+v0x23770e0_0 .net "Y", 0 0, L_0x23776e0; 1 drivers
+v0x2377180_0 .var "abit", 0 0;
+v0x2377230_0 .var "bbit", 0 0;
+v0x23772e0_0 .var "sbit", 0 0;
+S_0x2365010 .scope module, "obj" "comparator" 2 6, 3 1, S_0x2364f20;
+ .timescale 0 0;
+v0x2342ca0_0 .net *"_s0", 2 0, L_0x23773c0; 1 drivers
+v0x2376be0_0 .net *"_s3", 1 0, C4<00>; 1 drivers
+v0x2376c80_0 .net *"_s4", 2 0, C4<001>; 1 drivers
+v0x2376d20_0 .net *"_s6", 0 0, L_0x2377570; 1 drivers
+v0x2376dd0_0 .net "a", 0 0, v0x2377180_0; 1 drivers
+v0x2376e70_0 .net "b", 0 0, v0x2377230_0; 1 drivers
+v0x2376f50_0 .net "s", 0 0, v0x23772e0_0; 1 drivers
+v0x2376ff0_0 .alias "y", 0 0, v0x23770e0_0;
+L_0x23773c0 .concat [ 1 2 0 0], v0x23772e0_0, C4<00>;
+L_0x2377570 .cmp/eq 3, L_0x23773c0, C4<001>;
+L_0x23776e0 .functor MUXZ 1, v0x2377230_0, v0x2377180_0, L_0x2377570, C4<>;
+    .scope S_0x2364f20;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "comparatorTEST.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_0x2364f20;
+    %vpi_call 2 16 "$monitor", "%b,%b,%b,%b", v0x23772e0_0, v0x2377180_0, v0x2377230_0, v0x23770e0_0;
+    %delay 20, 0;
+    %set/v v0x2377180_0, 1, 1;
+    %set/v v0x2377230_0, 0, 1;
+    %set/v v0x23772e0_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x2377180_0, 1, 1;
+    %set/v v0x2377230_0, 0, 1;
+    %set/v v0x23772e0_0, 1, 1;
+    %delay 20, 0;
+    %vpi_call 2 28 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "comparatortb.v";
+    "./comparator.v";

@@ -1,0 +1,58 @@
+$date
+	Thu Oct 25 16:00:22 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mul16tb $end
+$var wire 32 ! S [31:0] $end
+$var reg 17 " abit [16:0] $end
+$var reg 17 # bbit [16:0] $end
+$scope module obj $end
+$var wire 17 $ a [16:0] $end
+$var wire 17 % b [16:0] $end
+$var wire 32 & s [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx &
+bx %
+bx $
+bx #
+bx "
+bx !
+$end
+#20
+b10 #
+b10 %
+b110 !
+b110 &
+b11 "
+b11 $
+#40
+b1 #
+b1 %
+b100 "
+b100 $
+b100 !
+b100 &
+#60
+b1000 #
+b1000 %
+b110 "
+b110 $
+b110000 !
+b110000 &
+#80
+b1 #
+b1 %
+b1 "
+b1 $
+b1 !
+b1 &
+#100

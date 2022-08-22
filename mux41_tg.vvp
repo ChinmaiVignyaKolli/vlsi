@@ -1,0 +1,176 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1cd7ab0 .scope module, "mux_tg41out" "mux_tg41out" 2 2;
+ .timescale 0 0;
+v0x1d03680_0 .var "abit", 0 0;
+v0x1d03700_0 .var "bbit", 0 0;
+v0x1d03780_0 .var "cbit", 0 0;
+v0x1d03800_0 .var "dbit", 0 0;
+RS_0x7fb09b3e50a8 .resolv tri, L_0x1d04550, L_0x1d046a0, L_0x1d04880, L_0x1d04980;
+v0x1d03880_0 .net8 "e", 0 0, RS_0x7fb09b3e50a8; 4 drivers, strength-aware
+v0x1d03990_0 .var "s1bit", 0 0;
+v0x1d03a10_0 .var "s2bit", 0 0;
+S_0x1cc4320 .scope module, "t4" "mux4_tg" 2 11, 3 2, S_0x1cd7ab0;
+ .timescale 0 0;
+v0x1d02ff0_0 .net "f0", 0 0, v0x1d03680_0; 1 drivers
+v0x1d03070_0 .net "f1", 0 0, v0x1d03700_0; 1 drivers
+v0x1d03140_0 .net "f2", 0 0, v0x1d03780_0; 1 drivers
+v0x1d03210_0 .net "f3", 0 0, v0x1d03800_0; 1 drivers
+v0x1d032e0_0 .alias "out", 0 0, v0x1d03880_0;
+v0x1d03360_0 .net "s1", 0 0, v0x1d03990_0; 1 drivers
+v0x1d034b0_0 .net "s2", 0 0, v0x1d03a10_0; 1 drivers
+RS_0x7fb09b3e5108 .resolv tri, L_0x1d03a90, L_0x1d03be0, L_0x1d03cc0, L_0x1d03ed0;
+v0x1d03530_0 .net8 "w1", 0 0, RS_0x7fb09b3e5108; 4 drivers, strength-aware
+RS_0x7fb09b3e5048 .resolv tri, L_0x1d03420, L_0x1d04170, L_0x1d042c0, L_0x1d044d0;
+v0x1d03600_0 .net8 "w2", 0 0, RS_0x7fb09b3e5048; 4 drivers, strength-aware
+S_0x1d02570 .scope module, "g1" "mux_tg" 3 4, 4 2, S_0x1cc4320;
+ .timescale 0 0;
+L_0x1d03c40 .functor NOT 1, v0x1d03990_0, C4<0>, C4<0>, C4<0>;
+v0x1d02cd0_0 .alias "d0", 0 0, v0x1d02ff0_0;
+v0x1d02d80_0 .alias "d1", 0 0, v0x1d03070_0;
+v0x1d02e30_0 .alias "o", 0 0, v0x1d03530_0;
+v0x1d02f40_0 .alias "s", 0 0, v0x1d03360_0;
+S_0x1d029a0 .scope module, "t1" "transmission_gate" 4 4, 5 1, S_0x1d02570;
+ .timescale 0 0;
+L_0x1d03a90 .functor PMOS 1, v0x1d03680_0, L_0x1d03b80, C4<0>, C4<0>;
+L_0x1d03b80 .functor NOT 1, L_0x1d03c40, C4<0>, C4<0>, C4<0>;
+L_0x1d03be0 .functor NMOS 1, v0x1d03680_0, L_0x1d03c40, C4<0>, C4<0>;
+v0x1d02a90_0 .net *"_s1", 0 0, L_0x1d03b80; 1 drivers
+v0x1d02b10_0 .alias "a", 0 0, v0x1d02ff0_0;
+v0x1d02bb0_0 .net "en", 0 0, L_0x1d03c40; 1 drivers
+v0x1d02c50_0 .alias "y", 0 0, v0x1d03530_0;
+S_0x1d02660 .scope module, "t2" "transmission_gate" 4 5, 5 1, S_0x1d02570;
+ .timescale 0 0;
+L_0x1d03cc0 .functor PMOS 1, v0x1d03700_0, L_0x1d03e50, C4<0>, C4<0>;
+L_0x1d03e50 .functor NOT 1, v0x1d03990_0, C4<0>, C4<0>, C4<0>;
+L_0x1d03ed0 .functor NMOS 1, v0x1d03700_0, v0x1d03990_0, C4<0>, C4<0>;
+v0x1d02750_0 .net *"_s1", 0 0, L_0x1d03e50; 1 drivers
+v0x1d027d0_0 .alias "a", 0 0, v0x1d03070_0;
+v0x1d02850_0 .alias "en", 0 0, v0x1d03360_0;
+v0x1d028d0_0 .alias "y", 0 0, v0x1d03530_0;
+S_0x1d01a90 .scope module, "g2" "mux_tg" 3 5, 4 2, S_0x1cc4320;
+ .timescale 0 0;
+L_0x1d04220 .functor NOT 1, v0x1d03990_0, C4<0>, C4<0>, C4<0>;
+v0x1d02220_0 .alias "d0", 0 0, v0x1d03140_0;
+v0x1d022d0_0 .alias "d1", 0 0, v0x1d03210_0;
+v0x1d02380_0 .alias "o", 0 0, v0x1d03600_0;
+v0x1d02490_0 .alias "s", 0 0, v0x1d03360_0;
+S_0x1d01ef0 .scope module, "t1" "transmission_gate" 4 4, 5 1, S_0x1d01a90;
+ .timescale 0 0;
+L_0x1d03420 .functor PMOS 1, v0x1d03780_0, L_0x1d040f0, C4<0>, C4<0>;
+L_0x1d040f0 .functor NOT 1, L_0x1d04220, C4<0>, C4<0>, C4<0>;
+L_0x1d04170 .functor NMOS 1, v0x1d03780_0, L_0x1d04220, C4<0>, C4<0>;
+v0x1d01fe0_0 .net *"_s1", 0 0, L_0x1d040f0; 1 drivers
+v0x1d02060_0 .alias "a", 0 0, v0x1d03140_0;
+v0x1d02100_0 .net "en", 0 0, L_0x1d04220; 1 drivers
+v0x1d021a0_0 .alias "y", 0 0, v0x1d03600_0;
+S_0x1d01b80 .scope module, "t2" "transmission_gate" 4 5, 5 1, S_0x1d01a90;
+ .timescale 0 0;
+L_0x1d042c0 .functor PMOS 1, v0x1d03800_0, L_0x1d04450, C4<0>, C4<0>;
+L_0x1d04450 .functor NOT 1, v0x1d03990_0, C4<0>, C4<0>, C4<0>;
+L_0x1d044d0 .functor NMOS 1, v0x1d03800_0, v0x1d03990_0, C4<0>, C4<0>;
+v0x1d01c70_0 .net *"_s1", 0 0, L_0x1d04450; 1 drivers
+v0x1d01cf0_0 .alias "a", 0 0, v0x1d03210_0;
+v0x1d01d70_0 .alias "en", 0 0, v0x1d03360_0;
+v0x1d01df0_0 .alias "y", 0 0, v0x1d03600_0;
+S_0x1cd8730 .scope module, "g3" "mux_tg" 3 6, 4 2, S_0x1cc4320;
+ .timescale 0 0;
+L_0x1d04750 .functor NOT 1, v0x1d03a10_0, C4<0>, C4<0>, C4<0>;
+v0x1d017b0_0 .alias "d0", 0 0, v0x1d03530_0;
+v0x1d01860_0 .alias "d1", 0 0, v0x1d03600_0;
+v0x1d01910_0 .alias "o", 0 0, v0x1d03880_0;
+v0x1d019e0_0 .alias "s", 0 0, v0x1d034b0_0;
+S_0x1d013e0 .scope module, "t1" "transmission_gate" 4 4, 5 1, S_0x1cd8730;
+ .timescale 0 0;
+L_0x1d04550 .functor PMOS 1, RS_0x7fb09b3e5108, L_0x1d045d0, C4<0>, C4<0>;
+L_0x1d045d0 .functor NOT 1, L_0x1d04750, C4<0>, C4<0>, C4<0>;
+L_0x1d046a0 .functor NMOS 1, RS_0x7fb09b3e5108, L_0x1d04750, C4<0>, C4<0>;
+v0x1d014d0_0 .net *"_s1", 0 0, L_0x1d045d0; 1 drivers
+v0x1d01590_0 .alias "a", 0 0, v0x1d03530_0;
+v0x1d01630_0 .net "en", 0 0, L_0x1d04750; 1 drivers
+v0x1d016d0_0 .alias "y", 0 0, v0x1d03880_0;
+S_0x1cd51a0 .scope module, "t2" "transmission_gate" 4 5, 5 1, S_0x1cd8730;
+ .timescale 0 0;
+L_0x1d04880 .functor PMOS 1, RS_0x7fb09b3e5048, L_0x1d04900, C4<0>, C4<0>;
+L_0x1d04900 .functor NOT 1, v0x1d03a10_0, C4<0>, C4<0>, C4<0>;
+L_0x1d04980 .functor NMOS 1, RS_0x7fb09b3e5048, v0x1d03a10_0, C4<0>, C4<0>;
+v0x1ce7c40_0 .net *"_s1", 0 0, L_0x1d04900; 1 drivers
+v0x1d011f0_0 .alias "a", 0 0, v0x1d03600_0;
+v0x1d01290_0 .alias "en", 0 0, v0x1d034b0_0;
+v0x1d01330_0 .alias "y", 0 0, v0x1d03880_0;
+    .scope S_0x1cd7ab0;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "test_tg41mux.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_0x1cd7ab0;
+    %vpi_call 2 16 "$display", "d0 d1 d2 d3 s0 s1 y";
+    %vpi_call 2 17 "$monitor", "%b  %b  %b  %b  %b  %b  %b ", v0x1d03680_0, v0x1d03700_0, v0x1d03780_0, v0x1d03800_0, v0x1d03990_0, v0x1d03a10_0, v0x1d03880_0;
+    %set/v v0x1d03680_0, 0, 1;
+    %set/v v0x1d03700_0, 0, 1;
+    %set/v v0x1d03780_0, 0, 1;
+    %set/v v0x1d03800_0, 0, 1;
+    %set/v v0x1d03990_0, 0, 1;
+    %set/v v0x1d03a10_0, 0, 1;
+    %delay 64, 0;
+    %vpi_call 2 24 "$finish";
+    %end;
+    .thread T_0;
+    .scope S_0x1cd7ab0;
+T_1 ;
+    %delay 32, 0;
+    %load/v 8, v0x1d03a10_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03a10_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x1cd7ab0;
+T_2 ;
+    %delay 16, 0;
+    %load/v 8, v0x1d03990_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03990_0, 8, 1;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x1cd7ab0;
+T_3 ;
+    %delay 8, 0;
+    %load/v 8, v0x1d03800_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03800_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x1cd7ab0;
+T_4 ;
+    %delay 4, 0;
+    %load/v 8, v0x1d03780_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03780_0, 8, 1;
+    %jmp T_4;
+    .thread T_4;
+    .scope S_0x1cd7ab0;
+T_5 ;
+    %delay 2, 0;
+    %load/v 8, v0x1d03700_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03700_0, 8, 1;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_0x1cd7ab0;
+T_6 ;
+    %delay 1, 0;
+    %load/v 8, v0x1d03680_0, 1;
+    %inv 8, 1;
+    %set/v v0x1d03680_0, 8, 1;
+    %jmp T_6;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 6;
+    "N/A";
+    "<interactive>";
+    "mux41_tgsim.v";
+    "./mux41_tg.v";
+    "./mux21_tg.v";
+    "./transmission_gate.v";

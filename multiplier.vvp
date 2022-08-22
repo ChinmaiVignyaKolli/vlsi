@@ -1,0 +1,52 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x2041f20 .scope module, "mul16tb" "mul16tb" 2 2;
+ .timescale 0 0;
+v0x20537d0_0 .net "S", 31 0, L_0x2053a00; 1 drivers
+v0x20538a0_0 .var "abit", 16 0;
+v0x2053950_0 .var "bbit", 16 0;
+S_0x2042010 .scope module, "obj" "mul16" 2 7, 3 1, S_0x2041f20;
+ .timescale 0 0;
+v0x201ee20_0 .net "a", 16 0, v0x20538a0_0; 1 drivers
+v0x2053690_0 .net "b", 16 0, v0x2053950_0; 1 drivers
+v0x2053730_0 .alias "s", 31 0, v0x20537d0_0;
+L_0x2053a00 .arith/mult 32, v0x20538a0_0, v0x2053950_0;
+    .scope S_0x2041f20;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "mul16TEST.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_0x2041f20;
+    %vpi_call 2 16 "$monitor", "%b,%b,%b", v0x20538a0_0, v0x2053950_0, v0x20537d0_0;
+    %delay 20, 0;
+    %movi 8, 3, 17;
+    %set/v v0x20538a0_0, 8, 17;
+    %movi 8, 2, 17;
+    %set/v v0x2053950_0, 8, 17;
+    %delay 20, 0;
+    %movi 8, 4, 17;
+    %set/v v0x20538a0_0, 8, 17;
+    %movi 8, 1, 17;
+    %set/v v0x2053950_0, 8, 17;
+    %delay 20, 0;
+    %movi 8, 6, 17;
+    %set/v v0x20538a0_0, 8, 17;
+    %movi 8, 8, 17;
+    %set/v v0x2053950_0, 8, 17;
+    %delay 20, 0;
+    %movi 8, 1, 17;
+    %set/v v0x20538a0_0, 8, 17;
+    %movi 8, 1, 17;
+    %set/v v0x2053950_0, 8, 17;
+    %delay 20, 0;
+    %vpi_call 2 30 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "multiplier16tb.v";
+    "./multiplier16.v";

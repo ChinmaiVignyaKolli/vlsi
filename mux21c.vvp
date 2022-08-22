@@ -1,0 +1,50 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1641f80 .scope module, "mux21c_tb" "mux21c_tb" 2 2;
+ .timescale 0 0;
+v0x1677020_0 .var "abit", 0 0;
+v0x16770f0_0 .var "bbit", 0 0;
+v0x16771a0_0 .var "s", 0 0;
+v0x1677250_0 .net "y", 0 0, L_0x1677330; 1 drivers
+S_0x1665c40 .scope module, "m" "mux21c" 2 7, 3 1, S_0x1641f80;
+ .timescale 0 0;
+v0x1665d30_0 .net "a", 0 0, v0x1677020_0; 1 drivers
+v0x1676e30_0 .net "b", 0 0, v0x16770f0_0; 1 drivers
+v0x1676ed0_0 .net "s", 0 0, v0x16771a0_0; 1 drivers
+v0x1676f70_0 .alias "y", 0 0, v0x1677250_0;
+L_0x1677330 .functor MUXZ 1, v0x1677020_0, v0x16770f0_0, v0x16771a0_0, C4<>;
+    .scope S_0x1641f80;
+T_0 ;
+    %set/v v0x1677020_0, 1, 1;
+    %set/v v0x16770f0_0, 0, 1;
+    %set/v v0x16771a0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0x1677020_0, 0, 1;
+    %set/v v0x16770f0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x1677020_0, 1, 1;
+    %set/v v0x16770f0_0, 0, 1;
+    %set/v v0x16771a0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x1677020_0, 0, 1;
+    %set/v v0x16770f0_0, 1, 1;
+    %set/v v0x16771a0_0, 1, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x1641f80;
+T_1 ;
+    %vpi_call 2 30 "$dumpfile", "test21muxc.vcd";
+    %vpi_call 2 31 "$dumpvars", 1'sb0, S_0x1641f80;
+    %vpi_call 2 32 "$monitor", "abit=%b,bbit=%b,s=%b,y=%d", v0x1677020_0, v0x16770f0_0, v0x16771a0_0, v0x1677250_0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "mux21c_tb.v";
+    "./mux21c.v";
